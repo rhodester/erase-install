@@ -1161,7 +1161,7 @@ dialog_progress() {
 
     elif [[ "$1" == "reboot-delay" ]]; then
         # Countdown seconds to reboot (a bit shorter than rebootdelay)
-        countdown=$((rebootdelay-60))
+        countdown=$((rebootdelay+60))
         echo "progress: $countdown" >> "$dialog_log"
         until [ "$countdown" -eq 0 ]; do
             sleep 1
@@ -3753,8 +3753,8 @@ while test $# -gt 0 ; do
         --rebootdelay)
             shift
             rebootdelay="$1"
-            if [[ $rebootdelay -gt 300 ]]; then
-                rebootdelay=300
+            if [[ $rebootdelay -gt 240 ]]; then
+                rebootdelay=240
             fi
             ;;
         --test-run) test_run="yes"
@@ -3921,8 +3921,8 @@ while test $# -gt 0 ; do
             ;;
         --rebootdelay*)
             rebootdelay=$(echo "$1" | sed -e 's|^[^=]*=||g' | tr -d '"')
-            if [[ $rebootdelay -gt 300 ]]; then
-                rebootdelay=300
+            if [[ $rebootdelay -gt 240 ]]; then
+                rebootdelay=240
             fi
             ;;
         --version*)
