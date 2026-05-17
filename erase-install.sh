@@ -1161,7 +1161,7 @@ dialog_progress() {
 
     elif [[ "$1" == "reboot-delay" ]]; then
         # Countdown seconds to reboot (a bit shorter than rebootdelay)
-        countdown=$((rebootdelay-2))
+        countdown=$((rebootdelay-60))
         echo "progress: $countdown" >> "$dialog_log"
         until [ "$countdown" -eq 0 ]; do
             sleep 1
